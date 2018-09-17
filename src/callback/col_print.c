@@ -15,7 +15,7 @@ void	callback_col_print_codes(callback_col_t	*this)
 	while (i < SIM_LIST_SIZE) {
 		if (this->l_code_str[i] != NULL) {
 			printf("\t%u \t--> %s\n", this->l_code[i],
-				this->l_code_str[i]);
+			this->l_code_str[i]);
 		}
 		i++;
 	}

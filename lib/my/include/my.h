@@ -20,5 +20,6 @@ char	*str_go_to_tok(char *str, char tok);
 char	*my_strfree(char *str);
 int	my_getnbr(char const *str);
 int	my_strn_eq(char const *cmped, char const *cmper);
+float	*my_fnew(void);
 
 #endif /* __MY_H__ */

@@ -46,10 +46,14 @@ SRC		=	src/callback/callback.c		\
 			src/callback/collection_fill.c	\
 			src/callback/col_print.c	\
 			src/callback/print.c		\
-			src/callback/get.c		\
+			src/callback/get_parts.c	\
+			src/callback/rvals.c		\
+			src/command/command.c		\
+			src/command/compose.c		\
 			src/ext/str_go_to_tok.c		\
 			src/ext/my_strfree.c		\
-			src/ext/my_strn_eq.c
+			src/ext/my_strn_eq.c		\
+			src/ext/my_fnew.c
 
 OBJ		=	$(SRC:.c=.o)
 OBJ		+=	$(MAIN:.c=.o)
@@ -117,4 +121,4 @@ tclean:
 	$(RM) *vgcore*
 	$(RM) $(TEST_NAME)
 
-fclean: tclean gclean cclean
+fclean: tclean gclean cclean libfclean

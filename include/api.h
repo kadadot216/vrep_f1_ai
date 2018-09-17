@@ -97,8 +97,10 @@ typedef enum	e_api_rtype {
 #define	MSG_DONE		("Simulation was correctly ended")
 #define	MSG_EMPTY_CMD		("Empty command")
 #define	MSG_UNKNOWN_CMD		("Unkown command")
-#define	MSG_WRONG_ARGS		("Wrong arguments provided. Please refer to protocol")
-#define	MSG_MANY_ARGS		("Too many args provided with the command. Please refer to protocol")
+#define	MSG_WRONG_ARGS		("Wrong arguments provided."	\
+				" Please refer to protocol")
+#define	MSG_MANY_ARGS		("Too many args provided with the command." \
+				" Please refer to protocol")
 #define	MSG_PIPE_FAIL		("Pipeline failure")
 #define	MSG_ARGVAL_ERR		("Unexpected command argument's value")
 #define	MSG_INFOGET_FAIL	("Camera infoget failure")

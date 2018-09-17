@@ -21,7 +21,6 @@ callback_col_t	*callback_col_free(callback_col_t *this)
 	this = callback_col_reset_codes(this);
 	this = callback_col_free_msg(this);
 	this = callback_col_free_addinfos(this);
-	this = callback_col_free_rtypes(this);
 	return (this);
 }
 

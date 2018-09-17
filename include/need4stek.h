@@ -42,7 +42,7 @@ typedef	union	u_api_rvals {
 	float	lidar[LRES_SIZE];
 	float	fbk;
 	long	stime[STIME_SIZE];
-}		api_rvals_t;
+}	api_rvals_t;
 
 typedef struct	s_callback {
 	callback_col_t	*ref;
@@ -57,13 +57,17 @@ typedef struct	s_callback {
 typedef	struct	s_command {
 	cmdname_t	name;
 	char		*prefix;
-	float		value;
+	float		*value;
 	api_rtype_t	rtype;
-}		command_t;
+}	command_t;
 
 void	callback_col_print_addinfos(callback_col_t *this);
 void	callback_col_print_all(callback_col_t *this);
 void	callback_col_print_codes(callback_col_t	*this);
+api_rvals_t	rvals_get_lidar(callback_t *this, char *line);
+api_rvals_t	rvals_get_feedback(callback_t *this, char *line);
+api_rvals_t	rvals_get_stime(callback_t *this, char *line);
+char	*str_go_after_rvals(char *head, callback_t *this);
 callback_col_t	*callback_col_fill(callback_col_t *this);
 callback_col_t	*callback_col_free(callback_col_t *this);
 callback_col_t	callback_col_new(void);
