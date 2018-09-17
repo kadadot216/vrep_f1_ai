@@ -36,7 +36,7 @@ static callback_t	*callback_get_addinfo(callback_t *this, char *line)
 
 	while (i < ADDINFO_PTS) {
 		if (my_strn_eq(line, addinfo_ref[i])) {
-			this->code_str = addinfo_ref[i];
+			this->addinfo = addinfo_ref[i];
 			return (this);
 		}
 		i++;
@@ -44,37 +44,7 @@ static callback_t	*callback_get_addinfo(callback_t *this, char *line)
 	return (this);
 }
 
-api_rvals_t	rvals_get_lidar(callback_t *this, char *line)
-{
-	char	*head = line;
-	int	index = 0;
-
-	while (index < LRES_SIZE) {
-		this->rvals.lidar[index] = atof(head); 
-		head = str_go_to_tok(head, ':');
-		index++;
-	}
-	return (this->rvals);
-}
-
-api_rvals_t	rvals_get_feedback(callback_t *this, char *line)
-{
-	this->rvals.fbk = atof(line);
-	return (this->rvals);
-}
-
-api_rvals_t	rvals_get_stime(callback_t *this, char *line)
-{
-	char	*head = line;
-
-	head = str_go_to_tok(head, '[');
-	this->rvals.stime[SIMTIME_S] = atol(head);
-	head = str_go_to_tok(head, ',');
-	this->rvals.stime[SIMTIME_NS] = atol(head);
-	return (this->rvals);
-}
-
-static callback_t	*callback_get_rtype(callback_t *this, char *line)
+static callback_t	*callback_get_rvals(callback_t *this, char *line)
 {
 	if (this->rtype == RES_LIDAR) {
 		this->rvals = rvals_get_lidar(this, line);
@@ -84,6 +54,21 @@ static callback_t	*callback_get_rtype(callback_t *this, char *line)
 		this->rvals = rvals_get_stime(this, line);
 	}
 	return (this);
+}
+
+char	*str_go_after_rvals(char *head, callback_t *this)
+{
+	int	times = 0;
+
+	if (this->rtype == RES_LIDAR)
+		times = LRES_SIZE;
+	else if (this->rtype == RES_FEEDBACK || this->rtype == RES_SIMTIME)
+		times = 1;
+	while (times > 0) {
+		head = str_go_to_tok(head, ADDINFO_SEP);
+		times--;
+	}
+	return (head);
 }
 
 callback_t	*callback_get_parts(callback_t *this, char *line)
@@ -96,6 +81,8 @@ callback_t	*callback_get_parts(callback_t *this, char *line)
 	head = str_go_to_tok(head, ADDINFO_SEP);
 	this = callback_get_code_str(this, head);
 	head = str_go_to_tok(head, ADDINFO_SEP);
+	this = callback_get_rvals(this, head);
+	head = str_go_after_rvals(head, this);
 	this = callback_get_addinfo(this, head);
 	return (this);
 }
