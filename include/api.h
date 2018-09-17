@@ -23,6 +23,10 @@
 #define	C_GET_CAR_SPEED_MIN	("GET_CAR_SPEED_MIN")
 #define	C_GET_INFO_SIMTIME	("GET_INFO_SIMTIME")
 
+#define	CAR_MOVE_MAX	(1.0)
+#define	WHEELS_DIR_MIN	(-1.0)
+#define	WHEELS_DIR_MAX	(1.0)
+
 typedef enum	e_cmdname {
 	START_SIMULATION,
 	STOP_SIMULATION,

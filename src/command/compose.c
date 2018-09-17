@@ -6,14 +6,14 @@
 */
 
 #include <stdio.h>
-#include "need4stek.h"
+#include "command.h"
 
 void	command_psend(char const *cmd, float *value)
 {
 	if (value)
-		printf("%s:%f\n", cmd, *value);
+		dprintf(1, "%s:%f\n", cmd, *value);
 	else
-		printf("%s\n", cmd);
+		dprintf(1, "%s\n", cmd);
 }
 
 void	command_send(command_t *this)

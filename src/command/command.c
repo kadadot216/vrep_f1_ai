@@ -7,6 +7,7 @@
 
 #include "my.h"
 #include "need4stek.h"
+#include "command.h"
 
 command_t	*command_table_init(void)
 {

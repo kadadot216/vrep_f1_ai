@@ -26,13 +26,19 @@ void	rvals_reset(callback_t *this)
 
 callback_t	*callback_reset(callback_t *this)
 {
-	this->ref = NULL;
 	this->code = 0;
 	this->status = 0;
 	this->code_str = NULL;
 	this->addinfo = NULL;
-	this->rtype = RES_NIL;
+	this->rtype = RES_SIMTIME;
 	rvals_reset(this);
+	return (this);
+}
+
+callback_t	*callback_unset(callback_t *this)
+{
+	this = callback_reset(this);
+	this->ref = NULL;
 	return (this);
 }
 
@@ -62,6 +68,6 @@ callback_t	callback_new(void)
 {
 	callback_t	new;
 
-	callback_reset(&new);
+	callback_unset(&new);
 	return (new);
 }

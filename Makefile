@@ -53,7 +53,9 @@ SRC		=	src/callback/callback.c		\
 			src/ext/str_go_to_tok.c		\
 			src/ext/my_strfree.c		\
 			src/ext/my_strn_eq.c		\
-			src/ext/my_fnew.c
+			src/ext/my_fnew.c		\
+			src/vehicle/vehicle.c		\
+			src/vehicle/update.c
 
 OBJ		=	$(SRC:.c=.o)
 OBJ		+=	$(MAIN:.c=.o)
@@ -95,7 +97,7 @@ libre: libfclean lib
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(MAIN) $(SRC) $(LIBFLAG)
 
-re: clean fclean $(NAME)
+re: fclean lib $(NAME)
 
 clean:
 	$(RM) $(OBJ)
