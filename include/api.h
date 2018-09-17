@@ -35,7 +35,8 @@ typedef enum	e_cmdname {
 	CYCLE_WAIT,
 	GET_CAR_SPEED_MAX,
 	GET_CAR_SPEED_MIN,
-	GET_INFO_SIMTIME
+	GET_INFO_SIMTIME,
+	CMDNAME_SIZE
 }	cmdname_t;
 #	endif	/* __API_CMD_H__ */
 

@@ -54,6 +54,13 @@ typedef struct	s_callback {
 	char		*addinfo;
 }	callback_t;
 
+typedef	struct	s_command {
+	cmdname_t	name;
+	char		*prefix;
+	float		value;
+	api_rtype_t	rtype;
+}		command_t;
+
 void	callback_col_print_addinfos(callback_col_t *this);
 void	callback_col_print_all(callback_col_t *this);
 void	callback_col_print_codes(callback_col_t	*this);

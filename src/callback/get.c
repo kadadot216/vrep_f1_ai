@@ -46,19 +46,32 @@ static callback_t	*callback_get_addinfo(callback_t *this, char *line)
 
 api_rvals_t	rvals_get_lidar(callback_t *this, char *line)
 {
-	this->rvals.lidar; //itoa
+	char	*head = line;
+	int	index = 0;
+
+	while (index < LRES_SIZE) {
+		this->rvals.lidar[index] = atof(head); 
+		head = str_go_to_tok(head, ':');
+		index++;
+	}
+	return (this->rvals);
 }
 
 api_rvals_t	rvals_get_feedback(callback_t *this, char *line)
 {
-	this->rvals.fbk; //itoa
-
+	this->rvals.fbk = atof(line);
+	return (this->rvals);
 }
 
 api_rvals_t	rvals_get_stime(callback_t *this, char *line)
 {
-	this->rvals.stime; //itoa
+	char	*head = line;
 
+	head = str_go_to_tok(head, '[');
+	this->rvals.stime[SIMTIME_S] = atol(head);
+	head = str_go_to_tok(head, ',');
+	this->rvals.stime[SIMTIME_NS] = atol(head);
+	return (this->rvals);
 }
 
 static callback_t	*callback_get_rtype(callback_t *this, char *line)

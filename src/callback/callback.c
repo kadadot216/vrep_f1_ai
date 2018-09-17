@@ -8,7 +8,7 @@
 #include "my.h"
 #include "need4stek.h"
 
-callback_t	*callback_free_rvals(callback_t *this)
+void	rvals_reset(callback_t *this)
 {
 	int	i = 0;
 
@@ -20,7 +20,7 @@ callback_t	*callback_free_rvals(callback_t *this)
 	this->rvals.fbk = 0.0;
 	this->rvals.stime[SIMTIME_S] = 0;
 	this->rvals.stime[SIMTIME_NS] = 0;
-	return (this);
+	return;
 }
 
 callback_t	*callback_reset(callback_t *this)
@@ -30,8 +30,8 @@ callback_t	*callback_reset(callback_t *this)
 	this->status = 0;
 	this->code_str = NULL;
 	this->addinfo = NULL;
-	this->cmd_type = RES_NIL;
-	this = callback_free_rvals(this);
+	this->rtype = RES_NIL;
+	rvals_reset(this);
 	return (this);
 }
 
