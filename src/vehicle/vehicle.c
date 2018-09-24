@@ -6,30 +6,7 @@
 */
 
 #include "need4stek.h"
-
-
-vehicle_t	*vehicle_set_speed(vehicle_t *this, float speed)
-{
-	this->speed = speed;
-	return (this);
-}
-
-vehicle_t	*vehicle_set_direction(vehicle_t *this, float wheels)
-{
-	this->direction = wheels;
-	return (this);
-}
-
-vehicle_t	*vehicle_set_lidar(vehicle_t *this, float *lidar)
-{
-	int	index = 0;
-
-	while (index < LRES_SIZE) {
-		this->lidar[index] = lidar[index];
-		index++;
-	}
-	return (this);
-}
+#include "vehicle.h"
 
 vehicle_t	*vehicle_reset(vehicle_t *this)
 {
@@ -38,6 +15,8 @@ vehicle_t	*vehicle_reset(vehicle_t *this)
 	this = vehicle_set_speed(this, 0.0f);
 	this = vehicle_set_direction(this, 0.0f);
 	this = vehicle_set_lidar(this, empty_lidar);
+	this = vehicle_set_actions(this);
+	this = vehicle_set_getinfos(this);
 	return (this);
 }
 

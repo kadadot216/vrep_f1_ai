@@ -2,25 +2,60 @@
 ** EPITECH PROJECT, 2018
 ** main.c
 ** File description:
-** Main file for debugging purposes
+** Bootstrap
 */
 
+#include <unistd.h>
+#include <stdio.h>
+
+#include "vehicle.h"
+
 #include "need4stek.h"
+#include "command.h"
+#include "my.h"
+
+int	n4s_track_cleared(callback_t *c)
+{
+	return (my_strn_eq(INFO_TRACK, c->addinfo));
+}
 
 int	main(int ac, char **av)
 {
+	char	*line = NULL;
+	size_t	n = 0;
 	callback_col_t	collection = callback_col_new();
+	command_t	*simtab = get_simtab();
 	callback_t	c = callback_new();
-	char	*line = "1:OK:No errors so far:[14s,111941936ns]:Track Cleared: [-1][13s 211248516ns]\n";
+	vehicle_t	vehicle = vehicle_new();
 
 	(void)ac;
 	(void)av;
-	c.rtype = RES_SIMTIME;
-	callback_col_print_all(&collection);
 	callback_link_ref(&c, &collection);
+	command_send(&simtab[START_SIMULATION]);
+	getline(&line, &n, stdin);
 	callback_get_parts(&c, line);
 	callback_print_all(&c);
-	callback_reset(&c);
+	sleep(2);
+	vehicle_set_speed(&vehicle, 0.5);
+	vehicle_update_actions(&vehicle);
+	command_send(&vehicle.action[CAR_FORWARD]);
+	getline(&line, &n, stdin);
+	callback_get_parts(&c, line);
+	callback_print_all(&c);
+	my_putstr_fd(2, line);
+	while (!n4s_track_cleared(&c)) {
+		command_send(&simtab[GET_INFO_SIMTIME]);
+		getline(&line, &n, stdin);
+		callback_get_parts(&c, line);
+		callback_print_all(&c);
+		vehicle_getinfos(&vehicle, &collection);
+		usleep(500);
+	}
+	callback_print_all(&c);
+	free(line);
+	simtab = ctab_destroy(simtab, SIM_ACTIONS_SIZE);
+	callback_unset(&c);
 	callback_col_free(&collection);
+	sleep(2);
 	return (0);
 }

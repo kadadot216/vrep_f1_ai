@@ -40,7 +40,8 @@ NAME		=	ai
 
 MAIN		=	src/main.c
 
-SRC		=	src/callback/callback.c		\
+SRC		=	src/simulation.c		\
+			src/callback/callback.c		\
 			src/callback/collection.c	\
 			src/callback/collection_free.c	\
 			src/callback/collection_fill.c	\
@@ -48,14 +49,18 @@ SRC		=	src/callback/callback.c		\
 			src/callback/print.c		\
 			src/callback/get_parts.c	\
 			src/callback/rvals.c		\
-			src/command/command.c		\
+			src/command/commandtab.c	\
 			src/command/compose.c		\
 			src/ext/str_go_to_tok.c		\
 			src/ext/my_strfree.c		\
 			src/ext/my_strn_eq.c		\
 			src/ext/my_fnew.c		\
 			src/vehicle/vehicle.c		\
-			src/vehicle/update.c
+			src/vehicle/update.c		\
+			src/vehicle/setters.c		\
+			src/vehicle/actions.c		\
+			src/vehicle/ai/compute_lidar.c	\
+			src/vehicle/ai/compute_speed.c
 
 OBJ		=	$(SRC:.c=.o)
 OBJ		+=	$(MAIN:.c=.o)
