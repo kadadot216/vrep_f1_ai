@@ -41,13 +41,14 @@ int	main(int ac, char **av)
 	command_send(&vehicle.action[CAR_FORWARD]);
 	getline(&line, &n, stdin);
 	callback_get_parts(&c, line);
-	callback_print_all(&c);
+	//callback_print_all(&c);
 	while (!n4s_track_cleared(&c)) {
 		vehicle_getinfos(&vehicle, &collection);
+		usleep(10);
 		command_send(&simtab[GET_INFO_SIMTIME]);
 		getline(&line, &n, stdin);
 		callback_get_parts(&c, line);
-		callback_print_all(&c);
+		//callback_print_all(&c);
 		usleep(500);
 	}
 	callback_print_all(&c);
