@@ -8,6 +8,7 @@
 #ifndef __COMMAND_H__
 #define __COMMAND_H__
 
+#include "callback.h"
 #include "api.h"
 
 typedef	struct	s_command {
@@ -23,5 +24,6 @@ command_t	*command_table_destroy(command_t *this); //delete
 command_t	*command_table_init(void);		//delete
 command_t	*ctab_destroy(command_t *this, int size);
 command_t	*get_simtab(void);
+callback_t	*callback_getcmd(callback_t *this, command_t *command);;
 
 #endif /* __COMMAND_H__ */

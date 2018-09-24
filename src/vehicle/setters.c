@@ -30,6 +30,14 @@ vehicle_t	*vehicle_set_lidar(vehicle_t *this, float *lidar)
 	return (this);
 }
 
+vehicle_t	*vehicle_set_empty_lidar(vehicle_t *this)
+{
+	float	empty_lidar[LRES_SIZE] = { 0.0f };
+
+	this = vehicle_set_lidar(this, empty_lidar);
+	return (this);
+}
+
 vehicle_t	*vehicle_set_actions(vehicle_t *this)
 {
 	int	index = 0;
@@ -38,6 +46,7 @@ vehicle_t	*vehicle_set_actions(vehicle_t *this)
 		{CAR_BACKWARDS, my_strdup("CAR_BACKWARDS"), my_fnew(), 1},
 		{WHEELS_DIR, my_strdup("WHEELS_DIR"), my_fnew(), 1}
 	};
+	this->action = malloc(sizeof(command_t) * CAR_ACTION_SIZE);
 	while (index < CAR_ACTION_SIZE) {
 		this->action[index] = data[index];
 		*(this->action[index].value) = 0.0f;
@@ -56,6 +65,7 @@ vehicle_t	*vehicle_set_getinfos(vehicle_t *this)
 		{GET_CAR_SPEED_MAX, my_strdup("GET_CAR_SPEED_MAX"), NULL, 2},	// Non pour l'instant
 		{GET_CAR_SPEED_MIN, my_strdup("GET_CAR_SPEED_MIN"), NULL, 2}
 	};
+	this->getinfo = malloc(sizeof(command_t) * CAR_INFOACT_SIZE);
 	while (index < CAR_INFOACT_SIZE) {
 		this->getinfo[index] = data[index];
 		index++;
