@@ -5,6 +5,8 @@
 ** Addinfo creation
 */
 
+#include <stdio.h> //d
+
 #include "my.h"
 #include "callback.h"
 #include "need4stek.h"

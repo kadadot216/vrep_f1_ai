@@ -12,18 +12,6 @@
 #include "callback.h"
 #include "command.h"
 
-callback_t	*callback_getcmd(callback_t *this, command_t *command)
-{
-	char		*raw_res = NULL;
-	size_t		n = 0;
-	
-	command_send(command);
-	getline(&raw_res, &n, stdin);
-	callback_get_parts(this, raw_res);
-	free(raw_res);
-	return (this);
-}
-
 void	print_lidar(float lidar[LRES_SIZE])
 {
 	int	i = 0;
@@ -45,27 +33,27 @@ void	print_vehicle_infos(vehicle_t *this)
 	dprintf(2, "}\n");
 }
 
-vehicle_t	*vehicle_getinfos(vehicle_t *this, callback_col_t *col)
+vehicle_t	*vehicle_observe(vehicle_t *this, callback_t *cb)
 {
-	callback_t	cb = callback_new();
+	cb = callback_set_rtype(cb, RES_LIDAR);
+	callback_getcmd(cb, &this->getinfo[GET_INFO_LIDAR]);
+	this = vehicle_update_lidar(this, cb);
+	return (this);
+}
 
-	callback_link_ref(&cb, col);
-	dprintf(2, "lidar:\n");	//dbg
+vehicle_t	*vehicle_getinfos(vehicle_t *this, callback_t *cb)
+{
 	// Faire qqchose pour mapper le lidar à partir de
 	// du message de collection
 	// Prototype (callback_t *, callback_col_t, line)
-	cb.rtype = RES_LIDAR;
-	callback_getcmd(&cb, &this->getinfo[GET_INFO_LIDAR]);
-	this = vehicle_update_lidar(this, &cb);
-	//dprintf(2, "speed:\n");	//dbg
-	cb.rtype = RES_FEEDBACK;
-	callback_getcmd(&cb, &this->getinfo[GET_CURRENT_SPEED]);
-	this = vehicle_update_speed(this, &cb);
-	//dprintf(2, "direction:\n");	//dbg
-	cb.rtype = RES_FEEDBACK;
-	callback_getcmd(&cb, &this->getinfo[GET_CURRENT_WHEELS]);
-	this = vehicle_update_direction(this, &cb);
-	print_vehicle_infos(this);	//dbg
-	callback_unset(&cb);
+	cb->rtype = RES_LIDAR;
+	callback_getcmd(cb, &this->getinfo[GET_INFO_LIDAR]);
+	this = vehicle_update_lidar(this, cb);
+	//cb->rtype = RES_FEEDBACK;
+	//callback_getcmd(cb, &this->getinfo[GET_CURRENT_SPEED]);
+	//this = vehicle_update_speed(this, cb);
+	//cb->rtype = RES_FEEDBACK;
+	//callback_getcmd(cb, &this->getinfo[GET_CURRENT_WHEELS]);
+	//this = vehicle_update_direction(this, cb);
 	return (this);
 }

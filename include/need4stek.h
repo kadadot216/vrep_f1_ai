@@ -54,22 +54,15 @@ typedef struct	s_callback {
 	char		*addinfo;
 }	callback_t;
 
-void	callback_col_print_addinfos(callback_col_t *this);
-void	callback_col_print_all(callback_col_t *this);
-void	callback_col_print_codes(callback_col_t	*this);
+void		callback_col_print_addinfos(callback_col_t *this);
+void		callback_col_print_all(callback_col_t *this);
+void		callback_col_print_codes(callback_col_t	*this);
 api_rvals_t	rvals_get_lidar(callback_t *this, char *line);
 api_rvals_t	rvals_get_feedback(callback_t *this, char *line);
 api_rvals_t	rvals_get_stime(callback_t *this, char *line);
-char	*str_go_after_rvals(char *head, callback_t *this);
+char		*str_go_after_rvals(char *head, callback_t *this);
 callback_col_t	*callback_col_fill(callback_col_t *this);
 callback_col_t	*callback_col_free(callback_col_t *this);
 callback_col_t	callback_col_new(void);
-
-void		callback_print_all(callback_t *this);
-callback_t	*callback_link_ref(callback_t *this, callback_col_t *col);
-callback_t	*callback_get_parts(callback_t *this, char *line);
-callback_t	*callback_reset(callback_t *this);
-callback_t	*callback_unset(callback_t *this);
-callback_t	callback_new(void);
 
 #endif /* __NEED4STEK_H__ */

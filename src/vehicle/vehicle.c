@@ -7,7 +7,6 @@
 
 #include "need4stek.h"
 #include "vehicle.h"
-#include "command.h"
 
 vehicle_t	*vehicle_reset(vehicle_t *this)
 {
@@ -32,7 +31,7 @@ vehicle_t	vehicle_new(void)
 	vehicle_t	new;
 
 	vehicle_reset(&new);
-	vehicle_set_actions(&new);
-	vehicle_set_getinfos(&new);
+	vehicle_init_actions(&new);
+	vehicle_init_getinfos(&new);
 	return (new);
 }

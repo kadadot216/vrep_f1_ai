@@ -49,6 +49,7 @@ SRC		=	src/simulation.c		\
 			src/callback/print.c		\
 			src/callback/get_parts.c	\
 			src/callback/rvals.c		\
+			src/callback/getcmd.c		\
 			src/command/commandtab.c	\
 			src/command/compose.c		\
 			src/ext/str_go_to_tok.c		\
