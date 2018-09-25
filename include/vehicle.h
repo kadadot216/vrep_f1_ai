@@ -19,7 +19,7 @@ typedef	struct	vehicle_s {
 	command_t	*getinfo;
 }	vehicle_t;
 
-vehicle_t	*vehicle_getinfos(vehicle_t *this, callback_col_t *col);
+vehicle_t	*vehicle_getinfos(vehicle_t *this, callback_t *cb);
 vehicle_t	*vehicle_update_speed(vehicle_t *this, callback_t *cb);
 vehicle_t	*vehicle_update_direction(vehicle_t *this, callback_t *cb);
 vehicle_t	*vehicle_update_lidar(vehicle_t *this, callback_t *cb);
@@ -32,6 +32,8 @@ vehicle_t	*vehicle_init_actions(vehicle_t *this);
 vehicle_t	*vehicle_init_getinfos(vehicle_t *this);
 vehicle_t	*vehicle_update_actions(vehicle_t *this);
 vehicle_t	*vehicle_destroy(vehicle_t *this);
+vehicle_t	*vehicle_observe(vehicle_t *this, callback_t *cb);
 vehicle_t	vehicle_new(void);
+void		print_vehicle_infos(vehicle_t *this);	//dbg
 
 #endif /* __VEHICLE_H__ */

@@ -5,7 +5,7 @@
 ** Addinfo creation
 */
 
-#include <stdio.h>
+#include <stdio.h> //d
 
 #include "my.h"
 #include "callback.h"
@@ -48,8 +48,6 @@ callback_t	*callback_get_parts(callback_t *this, char *line)
 {
 	char	*head = line;
 
-	//if (this->rtype == RES_LIDAR)
-	//	dprintf(2, "%s\n", line);
 	this = callback_get_code(this, head);
 	head = str_go_to_tok(head, ADDINFO_SEP);
 	this = callback_get_status(this, head);

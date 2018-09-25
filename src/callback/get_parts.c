@@ -44,6 +44,12 @@ callback_t	*callback_get_addinfo(callback_t *this, char *line)
 	return (this);
 }
 
+callback_t	*callback_set_rtype(callback_t *this, api_rtype_t type)
+{
+	this->rtype = type;
+	return (this);
+}
+
 callback_t	*callback_get_rvals(callback_t *this, char *line)
 {
 	if (this->rtype == RES_LIDAR) {
