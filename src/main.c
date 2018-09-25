@@ -11,6 +11,7 @@
 #include "vehicle.h"
 
 #include "need4stek.h"
+#include "callback.h"
 #include "command.h"
 #include "my.h"
 
@@ -44,16 +45,18 @@ int	main(int ac, char **av)
 	//callback_print_all(&c);
 	while (!n4s_track_cleared(&c)) {
 		vehicle_getinfos(&vehicle, &collection);
-		usleep(10);
+		usleep(100);
 		command_send(&simtab[GET_INFO_SIMTIME]);
+		usleep(100);
 		getline(&line, &n, stdin);
 		callback_get_parts(&c, line);
 		//callback_print_all(&c);
-		usleep(500);
+		usleep(200);
 	}
 	callback_print_all(&c);
 	free(line);
 	simtab = ctab_destroy(simtab, SIM_ACTIONS_SIZE);
+	vehicle_destroy(&vehicle);
 	callback_unset(&c);
 	callback_col_free(&collection);
 	sleep(2);

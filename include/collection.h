@@ -24,9 +24,5 @@ callback_col_t	*callback_col_free_msg(callback_col_t *this);
 callback_col_t	*callback_col_free_rtypes(callback_col_t *this);
 callback_col_t	*callback_col_reset_codes(callback_col_t *this);
 callback_col_t	callback_col_new(void);
-callback_t	*callback_get_parts(callback_t *this, char *line);
-callback_t	*callback_link_ref(callback_t *this, callback_col_t *col);
-callback_t	*callback_reset(callback_t *this);
-callback_t	callback_new(void);
 
 #endif /* __COLLECTION_H__ */
