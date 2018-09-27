@@ -52,16 +52,18 @@ SRC		=	src/simulation.c		\
 			src/callback/getcmd.c		\
 			src/command/commandtab.c	\
 			src/command/compose.c		\
+			src/command/cmd_newval.c	\
 			src/ext/str_go_to_tok.c		\
 			src/ext/my_strfree.c		\
 			src/ext/my_strn_eq.c		\
 			src/ext/my_fnew.c		\
+			src/ext/my_inew.c		\
 			src/vehicle/vehicle.c		\
 			src/vehicle/update.c		\
 			src/vehicle/setters.c		\
 			src/vehicle/actions.c		\
-			src/vehicle/ai/compute_lidar.c	\
-			src/vehicle/ai/compute_speed.c
+			src/vehicle/ai/direction.c	\
+			src/vehicle/ai/speed.c
 
 OBJ		=	$(SRC:.c=.o)
 OBJ		+=	$(MAIN:.c=.o)

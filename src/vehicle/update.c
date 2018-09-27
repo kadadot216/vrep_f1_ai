@@ -28,8 +28,8 @@ vehicle_t	*vehicle_update_lidar(vehicle_t *this, callback_t *cb)
 
 vehicle_t	*vehicle_update_actions(vehicle_t *this)
 {
-	*(this->action[CAR_FORWARD].value) = this->speed;
-	*(this->action[CAR_BACKWARDS].value) = (- this->speed);
-	*(this->action[WHEELS_DIR].value) = this->direction;
+	this->action[CAR_FORWARD].value->f = this->speed;
+	this->action[CAR_BACKWARDS].value->f = (- this->speed);
+	this->action[WHEELS_DIR].value->f = this->direction;
 	return (this);
 }

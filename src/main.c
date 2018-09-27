@@ -8,7 +8,9 @@
 #include <unistd.h>
 #include <stdio.h>
 
-#include "vehicle.h"
+#include "vehicle.h"	// do smth
+
+#include"ai.h"	// do smth
 
 #include "need4stek.h"
 #include "callback.h"
@@ -36,18 +38,25 @@ int	main(int ac, char **av)
 	callback_getcmd(&c, &simtab[START_SIMULATION]);
 	callback_set_rtype(&c, RES_SIMTIME);
 	sleep(2);
-	vehicle_set_speed(&vehicle, 0.5);
+	vehicle_set_speed(&vehicle, 0.2);
 	vehicle_update_actions(&vehicle);
 	callback_set_rtype(&c, RES_NIL);
 	callback_getcmd(&c, &vehicle.action[CAR_FORWARD]);
 	while (!n4s_track_cleared(&c, &simtab[GET_INFO_SIMTIME])) {
 		vehicle_observe(&vehicle, &c);
 		print_vehicle_infos(&vehicle);	//dbg
-		//callback_print_all(&c);
+		vehicle_set_direction(&vehicle, ai_set_direction(&vehicle));
+		vehicle_set_speed(&vehicle, ai_set_speed(&vehicle));
+		vehicle_update_actions(&vehicle);
+		callback_getcmd(&c, &vehicle.action[CAR_FORWARD]);
+		callback_getcmd(&c, &vehicle.action[WHEELS_DIR]);
+		callback_print_all(&c);
 		usleep(20);
 	}
-	callback_print_all(&c);
-	usleep(2000);
+	vehicle_set_speed(&vehicle, 0.0);
+	vehicle_update_actions(&vehicle);
+	callback_getcmd(&c, &vehicle.action[CAR_FORWARD]);
+	sleep(3);
 	callback_getcmd(&c, &simtab[STOP_SIMULATION]);
 	simtab = ctab_destroy(simtab, SIM_ACTIONS_SIZE);
 	vehicle_destroy(&vehicle);

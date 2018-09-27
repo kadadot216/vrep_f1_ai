@@ -8,15 +8,12 @@
 #include <stdio.h>
 #include "command.h"
 
-void	command_psend(char const *cmd, float *value)
-{
-	if (value)
-		dprintf(1, "%s:%f\n", cmd, *value);
-	else
-		dprintf(1, "%s\n", cmd);
-}
-
 void	command_send(command_t *this)
 {
-	command_psend(this->prefix, this->value);
+	if (this->vtype == V_INT)
+		dprintf(1, "%s:%d\n", this->prefix, this->value->i);
+	else if (this->vtype == V_FLOAT)
+		dprintf(1, "%s:%f\n", this->prefix, this->value->f);
+	else
+		dprintf(1, "%s\n", this->prefix);
 }

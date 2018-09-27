@@ -12,15 +12,24 @@
 #include "callback.h"
 #include "command.h"
 
-void	print_lidar(float lidar[LRES_SIZE])
+void	print_lidar_corner(float *this, int size)
 {
 	int	i = 0;
 
-	while (i < LRES_SIZE) {
+	while (i < size) {
 		dprintf(2, (i < (LRES_SIZE - 1)) ? "\t\t%f, " :
-		"\t\t%f\n\t}\n", lidar[i]);
+		"\t\t%f\n\t}\n", this[i]);
 		i++;
 	}
+}
+
+void	print_lidar(lidar_t *this)
+{
+	dprintf(2, "\t\t%f", this->left_corner);
+	dprintf(2, "\t\t%f", this->left_side);
+	dprintf(2, "\t\t%f", this->center);
+	dprintf(2, "\t\t%f", this->right_side);
+	dprintf(2, "\t\t%f", this->right_corner);
 }
 
 void	print_vehicle_infos(vehicle_t *this)
@@ -29,7 +38,7 @@ void	print_vehicle_infos(vehicle_t *this)
 		"\tSpeed: %f\n"
 		"\tDir: %f\n"
 		"\tLidar: {", this->speed, this->direction);
-	print_lidar(this->lidar);
+	print_lidar(&this->lidar);
 	dprintf(2, "}\n");
 }
 
@@ -49,11 +58,11 @@ vehicle_t	*vehicle_getinfos(vehicle_t *this, callback_t *cb)
 	cb->rtype = RES_LIDAR;
 	callback_getcmd(cb, &this->getinfo[GET_INFO_LIDAR]);
 	this = vehicle_update_lidar(this, cb);
-	//cb->rtype = RES_FEEDBACK;
-	//callback_getcmd(cb, &this->getinfo[GET_CURRENT_SPEED]);
-	//this = vehicle_update_speed(this, cb);
-	//cb->rtype = RES_FEEDBACK;
-	//callback_getcmd(cb, &this->getinfo[GET_CURRENT_WHEELS]);
-	//this = vehicle_update_direction(this, cb);
+	cb->rtype = RES_FEEDBACK;
+	callback_getcmd(cb, &this->getinfo[GET_CURRENT_SPEED]);
+	this = vehicle_update_speed(this, cb);
+	cb->rtype = RES_FEEDBACK;
+	callback_getcmd(cb, &this->getinfo[GET_CURRENT_WHEELS]);
+	this = vehicle_update_direction(this, cb);
 	return (this);
 }
