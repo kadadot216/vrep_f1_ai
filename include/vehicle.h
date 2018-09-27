@@ -11,15 +11,17 @@
 #include "need4stek.h"
 #include "command.h"
 
-#define	CORNER_SIZE	(7)
-#define	SIDE_SIZE	(5)
-#define	CENTER_SIZE	(8)
+#define	CORNER_SIZE	(5)
+#define	SIDE_SIZE	(9)
+#define	CENTER_SIZE	(4)
 
-#define	LCORNER_START	(0)
-#define	LSIDE_START	(7)
-#define	CENTER_START	(12)
-#define	RSIDE_START	(20)
-#define	RCORNER_START	(25)
+#define	LCORNER_START	(2)
+#define	LSIDE_START	(5)
+#define	CENTER_START	(15)
+#define	RSIDE_START	(25)
+#define	RCORNER_START	(28)
+
+#define	LIDAR_ANGLES	(5)
 
 typedef struct	s_lidar {
 	float	left_corner;
@@ -37,7 +39,7 @@ typedef	struct	s_vehicle {
 	command_t	*getinfo;
 }	vehicle_t;
 
-#define	WHEEL_TICK	((2.0f) / (LRES_SIZE))
+#define	WHEEL_TICK	((2.0f) / (LIDAR_ANGLES))
 
 vehicle_t	*vehicle_getinfos(vehicle_t *this, callback_t *cb);
 vehicle_t	*vehicle_update_speed(vehicle_t *this, callback_t *cb);

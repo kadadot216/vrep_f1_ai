@@ -20,18 +20,6 @@ vehicle_t	*vehicle_set_direction(vehicle_t *this, float wheels)
 	return (this);
 }
 
-float	lidar_return_mean(float	*lidar, int size)
-{
-	int	index = 0;
-	float	total = 0.0f;
-
-	while (index < size) {
-		total += lidar[index];
-		index++;
-	}
-	return ((total / size));
-}
-
 vehicle_t	*vehicle_set_lidar(vehicle_t *this, float *lidar)
 {
 	this->lidar.left_corner = lidar_return_mean(&lidar[LCORNER_START], CORNER_SIZE);
