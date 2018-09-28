@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	callback_getcmd(&c, &simtab[START_SIMULATION]);
 	callback_set_rtype(&c, RES_SIMTIME);
 	sleep(2);
-	vehicle_set_speed(&vehicle, 0.3f);
+	vehicle_set_speed(&vehicle, SPEED_4);
 	vehicle_update_actions(&vehicle);
 	callback_set_rtype(&c, RES_NIL);
 	callback_getcmd(&c, &vehicle.action[CAR_FORWARD]);
@@ -46,12 +46,13 @@ int	main(int ac, char **av)
 	while (!n4s_track_cleared(&c, &simtab[GET_INFO_SIMTIME])) {
 		vehicle_observe(&vehicle, &c);
 		print_vehicle_infos(&vehicle);	//dbg
-		vehicle_set_direction(&vehicle, ai_set_direction(&vehicle));
-		vehicle_set_speed(&vehicle, ai_set_speed(&vehicle));
+		//vehicle_set_direction(&vehicle, ai_set_direction(&vehicle));
+		//vehicle_set_speed(&vehicle, ai_set_speed(&vehicle));
+		vehicle_update_params(&vehicle);
 		vehicle_update_actions(&vehicle);
-		callback_getcmd(&c, &vehicle.action[CAR_FORWARD]);
-		callback_getcmd(&c, &simtab[CYCLE_WAIT]);
+		//print_vehicle_infos(&vehicle);	//dbg
 		callback_getcmd(&c, &vehicle.action[WHEELS_DIR]);
+		callback_getcmd(&c, &vehicle.action[CAR_FORWARD]);
 		usleep(20);
 	}
 	vehicle_set_speed(&vehicle, 0.0);

@@ -12,24 +12,18 @@
 float	ai_set_direction(vehicle_t *this)
 {
 	int	index = 0;
-	int	imax = 0;
-	float	(*corner_ptr[LIDAR_ANGLES]) = {
-		&this->lidar.left_corner,
-		&this->lidar.left_side,
-		&this->lidar.center,
-		&this->lidar.right_side,
-		&this->lidar.right_corner,
-	};
-	float	*furthest_pt = corner_ptr[0];
 	float	new_direction = 0.0f;
+	int 	coeff = 1;
 
-	while (index < LIDAR_ANGLES) {
-		if ((*corner_ptr[index]) > (*furthest_pt) && (*corner_ptr[index]) > 400.0f) {
-			furthest_pt = corner_ptr[index];
-			imax = index;
-		}
-		index++;
-	}
-	new_direction = (- ((imax + 1) * WHEEL_TICK)) + 0.4f;	// - 1.0f + (0.2f pour compenser le nb impair d'angles)
+	//if (this->lidar.left_side > this->lidar.center && this->lidar.left_side > this->lidar.right_side && this->lidar.left_corner > TOO_CLOSE) {
+	//	new_direction = WHEEL_TICK;
+	//} else if (this->lidar.right_side > this->lidar.center && this->lidar.left_side < this->lidar.right_side && this->lidar.right_corner > TOO_CLOSE) {
+	//	new_direction = -WHEEL_TICK;
+	//}
+	//if (this->lidar.right_side < TOO_CLOSE) {
+	//	new_direction = WHEEL_TICK;
+	//} else if (this->lidar.left_side) {
+	//	new_direction = -WHEEL_TICK;
+	//}
 	return (new_direction);
 }

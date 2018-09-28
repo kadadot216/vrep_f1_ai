@@ -12,17 +12,6 @@
 #include "callback.h"
 #include "command.h"
 
-void	print_lidar_corner(float *this, int size)
-{
-	int	i = 0;
-
-	while (i < size) {
-		dprintf(2, (i < (LRES_SIZE - 1)) ? "\t\t%f, " :
-		"\t\t%f\n\t}\n", this[i]);
-		i++;
-	}
-}
-
 void	print_lidar(lidar_t *this)
 {
 	dprintf(2, "\t\t%f", this->left_corner);

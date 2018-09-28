@@ -63,6 +63,7 @@ SRC		=	src/simulation.c		\
 			src/vehicle/setters.c		\
 			src/vehicle/actions.c		\
 			src/vehicle/ai/direction.c	\
+			src/vehicle/range.c		\
 			src/vehicle/ai/speed.c
 
 OBJ		=	$(SRC:.c=.o)
@@ -103,7 +104,7 @@ libre: libfclean lib
 
 #	Program rules
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(MAIN) $(SRC) $(LIBFLAG)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $^ $(LIBFLAG)
 
 re: fclean lib $(NAME)
 
