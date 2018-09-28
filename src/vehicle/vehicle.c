@@ -13,6 +13,7 @@ vehicle_t	*vehicle_reset(vehicle_t *this)
 	this = vehicle_set_speed(this, 0.0f);
 	this = vehicle_set_direction(this, 0.0f);
 	this = vehicle_set_empty_lidar(this);
+	this = vehicle_set_dirside(this, DS_CENTER);
 	this->action = NULL;
 	this->getinfo = NULL;
 	return (this);

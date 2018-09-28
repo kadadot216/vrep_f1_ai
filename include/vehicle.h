@@ -11,22 +11,14 @@
 #include "need4stek.h"
 #include "command.h"
 
-#define	CORNER_SIZE	(5)
-#define	SIDE_SIZE	(5)
-#define	CENTER_SIZE	(12)
-
-#define	LSIDE_START	(4)
-#define	CENTER_START	(16)
-#define	RSIDE_START	(27)
-
-#define	LIDAR_ANGLES	(3)
+#define	LIDAR_LSIDE	(0)
+#define	LIDAR_CENTER	(15)
+#define	LIDAR_RSIDE	(31)
 
 typedef struct	s_lidar {
-	float	left_corner;
 	float	left_side;
 	float	center;
 	float	right_side;
-	float	right_corner;
 }	lidar_t;
 
 typedef enum	e_dirside {
@@ -50,7 +42,7 @@ typedef	struct	s_vehicle {
 #define	STEER_4		(0.2f)
 #define	STEER_5		(0.30f)
 #define	STEER_6		(0.40f)
-#define	STEER_7		(0.00f)
+#define	STEER_0		(0.00f)
 #define	STEERS		(7)
 
 #define	SPEED_1		(1.0f)
@@ -59,36 +51,36 @@ typedef	struct	s_vehicle {
 #define	SPEED_4		(0.3f)
 #define	SPEED_5		(0.2f)
 #define	SPEED_6		(0.1f)
-#define	SPEED_7		(0.0f)
+#define	SPEED_0		(0.0f)
 #define	SPEEDS		(7)
 
-#define	DRANGE_0	(3010.0f)
-#define	DRANGE_1	(2000.0f)
-#define	DRANGE_2	(1500.0f)
-#define	DRANGE_3	(1000.0f)
-#define	DRANGE_4	(600.0f)
-#define	DRANGE_5	(400.0f)
-#define	DRANGE_6	(200.0f)
-#define	DRANGE_7	(0.0f)
+#define	DRANGE_1	(3010.0f)
+#define	DRANGE_2	(2000.0f)
+#define	DRANGE_3	(1500.0f)
+#define	DRANGE_4	(1000.0f)
+#define	DRANGE_5	(600.0f)
+#define	DRANGE_6	(400.0f)
+#define	DRANGE_7	(200.0f)
+#define	DRANGE_0	(0.0f)
 #define	DRANGE_SIZE	(8)
 
-vehicle_t	*vehicle_getinfos(vehicle_t *this, callback_t *cb);
-vehicle_t	*vehicle_update_speed(vehicle_t *this, callback_t *cb);
-vehicle_t	*vehicle_update_direction(vehicle_t *this, callback_t *cb);
-vehicle_t	*vehicle_update_lidar(vehicle_t *this, callback_t *cb);
-vehicle_t	*vehicle_set_speed(vehicle_t *this, float speed);
-vehicle_t	*vehicle_set_direction(vehicle_t *this, float wheels);
-vehicle_t	*vehicle_set_lidar(vehicle_t *this, float *lidar);
-vehicle_t	*vehicle_set_empty_lidar(vehicle_t *this);
-vehicle_t	*vehicle_reset(vehicle_t *this);
+void		print_vehicle_infos(vehicle_t *this);	//dbg
+dirside_t	dirside_set(lidar_t *this);
+vehicle_t	*direction_set_side(vehicle_t *this);
+vehicle_t	*vehicle_destroy(vehicle_t *this);
 vehicle_t	*vehicle_init_actions(vehicle_t *this);
 vehicle_t	*vehicle_init_getinfos(vehicle_t *this);
-vehicle_t	*vehicle_update_actions(vehicle_t *this);
-vehicle_t	*vehicle_destroy(vehicle_t *this);
 vehicle_t	*vehicle_observe(vehicle_t *this, callback_t *cb);
-vehicle_t	vehicle_new(void);
-void		print_vehicle_infos(vehicle_t *this);	//dbg
-
+vehicle_t	*vehicle_reset(vehicle_t *this);
+vehicle_t	*vehicle_set_direction(vehicle_t *this, float wheels);
+vehicle_t	*vehicle_set_dirside(vehicle_t *this, dirside_t side);
+vehicle_t	*vehicle_set_empty_lidar(vehicle_t *this);
+vehicle_t	*vehicle_set_lidar(vehicle_t *this, float *lidar);
+vehicle_t	*vehicle_set_speed(vehicle_t *this, float speed);
+vehicle_t	*vehicle_update_actions(vehicle_t *this);
 vehicle_t	*vehicle_update_params(vehicle_t *this); //test
+vehicle_t	*vehicle_update_lidar(vehicle_t *this, callback_t *cb);
+vehicle_t	*vehicle_update_speed(vehicle_t *this, callback_t *cb);
+vehicle_t	vehicle_new(void);
 
 #endif /* __VEHICLE_H__ */

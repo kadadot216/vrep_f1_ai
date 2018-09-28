@@ -45,8 +45,8 @@ SRC		=	src/simulation.c		\
 			src/callback/collection.c	\
 			src/callback/collection_free.c	\
 			src/callback/collection_fill.c	\
-			src/callback/col_print.c	\
-			src/callback/print.c		\
+			src/debug/col_print.c		\
+			src/debug/cb_print.c		\
 			src/callback/get_parts.c	\
 			src/callback/rvals.c		\
 			src/callback/getcmd.c		\
@@ -62,9 +62,9 @@ SRC		=	src/simulation.c		\
 			src/vehicle/update.c		\
 			src/vehicle/setters.c		\
 			src/vehicle/actions.c		\
+			src/vehicle/lidar.c		\
 			src/vehicle/ai/direction.c	\
-			src/vehicle/range.c		\
-			src/vehicle/ai/speed.c
+			src/vehicle/ai/range.c
 
 OBJ		=	$(SRC:.c=.o)
 OBJ		+=	$(MAIN:.c=.o)

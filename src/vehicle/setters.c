@@ -20,28 +20,17 @@ vehicle_t	*vehicle_set_direction(vehicle_t *this, float wheels)
 	return (this);
 }
 
-float	lidar_return_mean(float	*lidar, int size)
+lidar_t		*lidar_set(lidar_t *this, float *tab)
 {
-	int	index = 0;
-	float	total = 0.0f;
-
-	while (index < size) {
-		total += lidar[index];
-		index++;
-	}
-	return ((total / LRES_SIZE) * (LRES_SIZE - size));
+	this->left_side = tab[LIDAR_LSIDE];
+	this->center = tab[LIDAR_CENTER];
+	this->right_side = tab[LIDAR_RSIDE];
+	return (this);
 }
 
-vehicle_t	*vehicle_set_lidar(vehicle_t *this, float *lidar)
+vehicle_t	*vehicle_set_lidar(vehicle_t *this, float *lidar_tab)
 {
-	//this->lidar.left_side = lidar_return_mean(&lidar[LSIDE_START], SIDE_SIZE);
-	//this->lidar.center = lidar_return_mean(&lidar[CENTER_START], CENTER_SIZE);
-	//this->lidar.right_side = lidar_return_mean(&lidar[LSIDE_START], SIDE_SIZE);
-	this->lidar.left_corner = lidar[0];
-	this->lidar.left_side = lidar[LSIDE_START];
-	this->lidar.center = lidar[CENTER_START];
-	this->lidar.right_side = lidar[RSIDE_START];
-	this->lidar.right_corner = lidar[31];
+	lidar_set(&this->lidar, lidar_tab);
 	return (this);
 }
 
@@ -50,6 +39,12 @@ vehicle_t	*vehicle_set_empty_lidar(vehicle_t *this)
 	float	empty_lidar[LRES_SIZE] = { 0.0f };
 
 	this = vehicle_set_lidar(this, empty_lidar);
+	return (this);
+}
+
+vehicle_t	*vehicle_set_dirside(vehicle_t *this, dirside_t side)
+{
+	this->dirside = side;
 	return (this);
 }
 
