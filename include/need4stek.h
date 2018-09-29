@@ -26,13 +26,10 @@ typedef struct	s_callback_col {
 	char		*l_addinfo[ADDINFO_PTS];
 }	callback_col_t;
 
-callback_col_t	*callback_col_fill(callback_col_t *this);
-
 #define RI_CALLBACK 	(0)
 #define RI_LIDAR 	(1)
 #define RI_FEEDBACK 	(2)
 #define RI_SIMTIME 	(3)
-
 #define	LRES_SIZE	(32)
 #define	STIME_SIZE	(2)
 #define	SIMTIME_S	(0)

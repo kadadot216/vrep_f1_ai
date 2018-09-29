@@ -24,7 +24,7 @@ cmdvalue_t	*cmdval_new(valtype_t vtype)
 }
 
 command_t	cmd_entry(cmdname_t name, char *prefix,
-		valtype_t type, api_rtype_t rtype)
+valtype_t type, api_rtype_t rtype)
 {
 	command_t	new;
 

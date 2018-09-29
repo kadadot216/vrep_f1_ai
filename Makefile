@@ -5,7 +5,7 @@
 ## Makefile for Need4Stek
 ##
 
-CC		=	gcc
+CC		=	gcc -W -Wall -Werror -Wextra
 DBCC		=	gcc -g
 RM		=	rm -f
 
@@ -40,7 +40,10 @@ NAME		=	ai
 
 MAIN		=	src/main.c
 
-SRC		=	src/simulation.c		\
+SRC		=	src/simulation/init.c		\
+			src/simulation/checking.c	\
+			src/simulation/main_rs.c	\
+			src/simulation/destroy_rs.c	\
 			src/callback/callback.c		\
 			src/callback/collection.c	\
 			src/callback/collection_free.c	\
@@ -49,6 +52,7 @@ SRC		=	src/simulation.c		\
 			src/debug/cb_print.c		\
 			src/debug/vehicle_print.c	\
 			src/callback/get_parts.c	\
+			src/callback/get_parts2.c	\
 			src/callback/rvals.c		\
 			src/callback/getcmd.c		\
 			src/command/commandtab.c	\
@@ -60,10 +64,12 @@ SRC		=	src/simulation.c		\
 			src/ext/my_fnew.c		\
 			src/ext/my_inew.c		\
 			src/vehicle/vehicle.c		\
+			src/vehicle/init.c		\
 			src/vehicle/update.c		\
 			src/vehicle/setters.c		\
 			src/vehicle/actions.c		\
-			src/vehicle/lidar.c		\
+			src/vehicle/lidar/setters.c	\
+			src/vehicle/lidar/checking.c	\
 			src/vehicle/ai/direction.c	\
 			src/vehicle/ai/range.c
 

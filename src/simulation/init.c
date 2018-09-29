@@ -1,20 +1,11 @@
 /*
 ** EPITECH PROJECT, 2018
-** simulation.c
+** init.c
 ** File description:
-** Simulation handling functions
+** Simulation tab creation function
 */
 
-#include "command.h"
-#include "callback.h"
-#include "need4stek.h"
-
-int	n4s_track_cleared(callback_t *c, command_t *siminfo)
-{
-	c = callback_set_rtype(c, RES_SIMTIME);
-	callback_getcmd(c, siminfo);
-	return (my_strn_eq(INFO_TRACK, c->addinfo));
-}
+#include "simulation.h"
 
 command_t	*get_simtab(void)
 {

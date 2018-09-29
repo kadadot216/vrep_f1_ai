@@ -18,9 +18,9 @@ void	print_lidar(lidar_t *this)
 void	print_vehicle_infos(vehicle_t *this)
 {
 	dprintf(2, "Vehicle: {\n"
-		"\tSpeed: %f\n"
-		"\tDir: %f\n"
-		"\tLidar: {", this->speed, this->direction);
+	"\tSpeed: %f\n"
+	"\tDir: %f\n"
+	"\tLidar: {", this->speed, this->direction);
 	print_lidar(&this->lidar);
 	dprintf(2, "}\n");
 }

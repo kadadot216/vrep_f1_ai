@@ -13,7 +13,7 @@ callback_t	*callback_getcmd(callback_t *this, command_t *command)
 {
 	char		*raw_res = NULL;
 	size_t		n = 0;
-	
+
 	command_send(command);
 	getline(&raw_res, &n, stdin);
 	callback_get_parts(this, raw_res);

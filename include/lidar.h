@@ -14,5 +14,6 @@ int	lidar_sides_over_center(lidar_t *this);
 int	lidar_lean_left(lidar_t *this);
 int	lidar_lean_right(lidar_t *this);
 int	lidar_in_range(float *lidar_pt, float *range_max, float *range_min);
+lidar_t	*lidar_set(lidar_t *this, float *tab);
 
 #endif /* __LIDAR_H__ */
