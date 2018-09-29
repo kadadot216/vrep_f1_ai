@@ -17,7 +17,7 @@ command_t *simulation)
 
 void	simulation_init_vehicle(vehicle_t *this, callback_t *cb)
 {
-	this = vehicle_set_speed(this, SPEED_4);
+	this = vehicle_set_speed(this, SPEED_2);
 	this = vehicle_update_actions(this);
 	cb = callback_set_rtype(cb, RES_SIMTIME);
 	cb = callback_getcmd(cb, &this->action[CAR_FORWARD]);

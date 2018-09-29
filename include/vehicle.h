@@ -36,35 +36,36 @@ typedef	struct	s_vehicle {
 	command_t	*getinfo;
 }	vehicle_t;
 
-#define	STEER_1		(0.008f)
+#define	STEER_1		(0.010f)
 #define	STEER_2		(0.05f)
 #define	STEER_3		(0.10f)
-#define	STEER_4		(0.2f)
+#define	STEER_4		(0.20f)
 #define	STEER_5		(0.30f)
-#define	STEER_6		(0.40f)
+#define	STEER_6		(0.50f)
 #define	STEER_0		(0.00f)
 #define	STEERS		(7)
 
 #define	SPEED_1		(1.0f)
-#define	SPEED_2		(0.8f)
-#define	SPEED_3		(0.5f)
-#define	SPEED_4		(0.3f)
-#define	SPEED_5		(0.2f)
-#define	SPEED_6		(0.1f)
+#define	SPEED_2		(0.80f)
+#define	SPEED_3		(0.60f)
+#define	SPEED_4		(0.45f)
+#define	SPEED_5		(0.20f)
+#define	SPEED_6		(0.15f)
 #define	SPEED_0		(0.0f)
 #define	SPEEDS		(7)
 
 #define	DRANGE_1	(3010.0f)
 #define	DRANGE_2	(2000.0f)
 #define	DRANGE_3	(1500.0f)
-#define	DRANGE_4	(1000.0f)
-#define	DRANGE_5	(600.0f)
-#define	DRANGE_6	(400.0f)
-#define	DRANGE_7	(200.0f)
+#define	DRANGE_4	(1100.0f)
+#define	DRANGE_5	(700.0f)
+#define	DRANGE_6	(500.0f)
+#define	DRANGE_7	(300.0f)
 #define	DRANGE_0	(0.0f)
+#define	DRANGE_TC	(80.0f)
 #define	DRANGE_SIZE	(8)
 
-void		print_vehicle_infos(vehicle_t *this);	//dbg
+void		print_vehicle_infos(vehicle_t *this);
 vehicle_t	*vehicle_destroy(vehicle_t *this);
 vehicle_t	*vehicle_init_actions(vehicle_t *this);
 vehicle_t	*vehicle_init_getinfos(vehicle_t *this);
