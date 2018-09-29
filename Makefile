@@ -47,6 +47,7 @@ SRC		=	src/simulation.c		\
 			src/callback/collection_fill.c	\
 			src/debug/col_print.c		\
 			src/debug/cb_print.c		\
+			src/debug/vehicle_print.c	\
 			src/callback/get_parts.c	\
 			src/callback/rvals.c		\
 			src/callback/getcmd.c		\

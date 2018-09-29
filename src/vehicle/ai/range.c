@@ -9,8 +9,9 @@
 
 #include "vehicle.h"
 #include "lidar.h"
+#include "ai.h"
 
-vehicle_t	*vehicle_update_params(vehicle_t *this)
+vehicle_t	*ai_update_vehicle(vehicle_t *this)
 {
 	float	ranges[DRANGE_SIZE] = {DRANGE_1, DRANGE_2, DRANGE_3, DRANGE_4,
 		DRANGE_5, DRANGE_6, DRANGE_7, DRANGE_0};

@@ -20,4 +20,3 @@ callback_t	*callback_getcmd(callback_t *this, command_t *command)
 	free(raw_res);
 	return (this);
 }
-

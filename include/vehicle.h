@@ -65,8 +65,6 @@ typedef	struct	s_vehicle {
 #define	DRANGE_SIZE	(8)
 
 void		print_vehicle_infos(vehicle_t *this);	//dbg
-dirside_t	dirside_set(lidar_t *this);
-vehicle_t	*direction_set_side(vehicle_t *this);
 vehicle_t	*vehicle_destroy(vehicle_t *this);
 vehicle_t	*vehicle_init_actions(vehicle_t *this);
 vehicle_t	*vehicle_init_getinfos(vehicle_t *this);
@@ -78,7 +76,6 @@ vehicle_t	*vehicle_set_empty_lidar(vehicle_t *this);
 vehicle_t	*vehicle_set_lidar(vehicle_t *this, float *lidar);
 vehicle_t	*vehicle_set_speed(vehicle_t *this, float speed);
 vehicle_t	*vehicle_update_actions(vehicle_t *this);
-vehicle_t	*vehicle_update_params(vehicle_t *this); //test
 vehicle_t	*vehicle_update_lidar(vehicle_t *this, callback_t *cb);
 vehicle_t	*vehicle_update_speed(vehicle_t *this, callback_t *cb);
 vehicle_t	vehicle_new(void);

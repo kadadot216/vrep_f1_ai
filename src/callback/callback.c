@@ -11,21 +11,6 @@
 #include "callback.h"
 #include "need4stek.h"
 
-void	rvals_reset(callback_t *this)
-{
-	int	i = 0;
-
-	while (i < LRES_SIZE) {
-		this->rvals.lidar[i] = 0.0;
-		i++;
-	}
-	i = 0;
-	this->rvals.fbk = 0.0;
-	this->rvals.stime[SIMTIME_S] = 0;
-	this->rvals.stime[SIMTIME_NS] = 0;
-	return;
-}
-
 callback_t	*callback_reset(callback_t *this)
 {
 	this->code = 0;

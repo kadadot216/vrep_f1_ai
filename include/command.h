@@ -29,14 +29,11 @@ typedef	struct	s_command {
 	api_rtype_t	rtype;
 }	command_t;
 
-void	command_psend(char const *cmd, float *value);
-void	command_send(command_t *this);
-command_t	cmd_entry(cmdname_t name, char *prefix,
-valtype_t type, api_rtype_t rtype);
+void		command_send(command_t *this);
 cmdvalue_t	*cmdval_new(valtype_t vtype);
-command_t	*command_table_destroy(command_t *this); //delete
-command_t	*command_table_init(void);		//delete
-command_t	*ctab_destroy(command_t *this, int size);
+command_t	*command_table_destroy(command_t *this, int size);
 command_t	*get_simtab(void);
+command_t	cmd_entry(cmdname_t name, char *prefix, valtype_t type,
+		api_rtype_t rtype);
 
 #endif /* __COMMAND_H__ */

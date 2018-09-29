@@ -21,8 +21,8 @@ vehicle_t	*vehicle_reset(vehicle_t *this)
 
 vehicle_t	*vehicle_destroy(vehicle_t *this)
 {
-	this->action = ctab_destroy(this->action, CAR_ACTION_SIZE);
-	this->getinfo = ctab_destroy(this->getinfo, CAR_INFOACT_SIZE);
+	this->action = command_table_destroy(this->action, CAR_ACTION_SIZE);
+	this->getinfo = command_table_destroy(this->getinfo, CAR_INFOACT_SIZE);
 	this = vehicle_reset(this);
 	return (this);
 }
