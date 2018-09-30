@@ -5,12 +5,9 @@
 ** Vehicle actions tab 
 */
 
-#include <stdlib.h>
-
-#include <stdio.h>
 #include "vehicle.h"
+#include "ai.h"
 #include "callback.h"
-#include "command.h"
 
 vehicle_t	*vehicle_observe(vehicle_t *this, callback_t *cb)
 {
@@ -20,12 +17,28 @@ vehicle_t	*vehicle_observe(vehicle_t *this, callback_t *cb)
 	return (this);
 }
 
-int	vehicle_can_change_speed(vehicle_t *this)
+void	vehicle_change_speed(vehicle_t *vehicle, callback_t *cb)
 {
-	return (is_speed_flag_set(this) || is_both_flags_set(this));
+	if (vehicle_can_change_speed(vehicle))
+		callback_getcmd(cb, &vehicle->action[CAR_FORWARD]);
 }
 
-int	vehicle_can_change_dir(vehicle_t *this)
+void	vehicle_change_dir(vehicle_t *vehicle, callback_t *cb)
 {
-	return (is_dir_flag_set(this) || is_both_flags_set(this));
+	if (vehicle_can_change_dir(vehicle))
+		callback_getcmd(cb, &vehicle->action[WHEELS_DIR]);
+}
+
+void	vehicle_dispatch_actions(vehicle_t *vehicle, callback_t *cb)
+{
+	vehicle = vehicle_update_actions(vehicle);
+	vehicle_change_speed(vehicle, cb);
+	vehicle_change_dir(vehicle, cb);
+	vehicle = vehicle_reset_changeflag(vehicle);
+}
+
+void	ai_update_vehicle(vehicle_t *vehicle)
+{
+	vehicle = ai_update_speed(vehicle);
+	vehicle = ai_update_direction(vehicle);
 }

@@ -70,10 +70,11 @@ SRC		=	src/simulation/init.c		\
 			src/vehicle/setters.c		\
 			src/vehicle/setters2.c		\
 			src/vehicle/actions.c		\
+			src/vehicle/actions_checks.c	\
 			src/vehicle/lidar/setters.c	\
 			src/vehicle/lidar/checking.c	\
-			src/vehicle/ai/direction.c	\
-			src/vehicle/ai/range.c
+			src/vehicle/ai/dirside.c	\
+			src/vehicle/ai/ai.c
 
 OBJ		=	$(SRC:.c=.o)
 OBJ		+=	$(MAIN:.c=.o)
@@ -85,7 +86,7 @@ TEST_SRC	=	tests/redirect_all_std.c	\
 
 TEST_FLAGS	=	--coverage -lcriterion
 
-GDB_MAIN	=	tests/main.c
+GDB_MAIN	=	$(MAIN)
 GDB_NAME	=	gdb.out
 
 

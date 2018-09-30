@@ -5,10 +5,27 @@
 ** Simulation main routines
 */
 
-#include <stdio.h>	//dbg
-
+#include <unistd.h>
 #include "simulation.h"
 #include "ai.h"
+
+void	simulation_run(sim_t *sim, callback_t *cb)
+{
+	vehicle_t	vehicle = vehicle_new();
+
+	simulation_init_vehicle(&vehicle, cb);
+	sleep(WAIT_MAIN_S);
+	while (!n4s_track_cleared(cb, &vehicle.getinfo[GET_INFO_LIDAR])) {
+		vehicle_observe(&vehicle, cb);
+		ai_update_vehicle(&vehicle);
+		vehicle_dispatch_actions(&vehicle, cb);
+		usleep(WAIT_LOOP_MS);
+	}
+	simulation_stop_vehicle(&vehicle, cb);
+	sleep(WAIT_MAIN_S);
+	simulation_stop(cb, sim);
+	vehicle_destroy(&vehicle);
+}
 
 void	simulation_begin(callback_t *cb, callback_col_t *col,
 sim_t *sim)

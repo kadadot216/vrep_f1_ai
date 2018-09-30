@@ -12,7 +12,7 @@
 #include "ai.h"
 
 static vehicle_t	*ai_update_from_range(vehicle_t *this, float *data,
-		vehicle_t *(*op)(vehicle_t *, float))
+vehicle_t *(*op)(vehicle_t *, float))
 {
 	int	idx = 1;
 	float	*center = &this->lidar.center;
@@ -57,8 +57,8 @@ int	is_speed_changed(vehicle_t *this, float old_speed)
 vehicle_t	*ai_update_speed(vehicle_t *this)
 {
 	float	old_speed = this->speed;
-	float	speeds[SPEED_SIZE] = {SPEED_1, SPEED_2, SPEED_3, SPEED_4, SPEED_5,
-		SPEED_6, SPEED_0};
+	float	speeds[SPEED_SIZE] = {SPEED_1, SPEED_2, SPEED_3, SPEED_4,
+		SPEED_5, SPEED_6, SPEED_0};
 
 	this = ai_update_from_range(this, speeds, vehicle_set_speed);
 	if (is_speed_changed(this, old_speed)) {

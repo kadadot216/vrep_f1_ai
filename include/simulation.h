@@ -31,6 +31,7 @@ void		simulation_destroy_assets(sim_t *sim, callback_t *cb);
 void		simulation_init_vehicle(vehicle_t *this, callback_t *cb);
 void		simulation_stop(callback_t *cb, sim_t *sim);
 void		simulation_stop_vehicle(vehicle_t *this, callback_t *cb);
+void		simulation_run(sim_t *, callback_t *);
 command_t	*sim_init_actions(void);
 sim_t		*sim_destroy(sim_t *this);
 sim_t		sim_init(void);
