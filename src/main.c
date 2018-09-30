@@ -16,23 +16,34 @@
 
 #include "simulation.h"
 
-void	vehicle_dispatch_actions(vehicle_t *vehicle, callback_t *cb)
+void	vehicle_change_speed(vehicle_t *vehicle, callback_t *cb)
 {
-	vehicle_update_actions(vehicle);
 	if (vehicle_can_change_speed(vehicle)) {
 		dprintf(2, "Noticed speed change\n");
 		callback_getcmd(cb, &vehicle->action[CAR_FORWARD]);
 	}
+}
+
+void	vehicle_change_dir(vehicle_t *vehicle, callback_t *cb)
+{
 	if (vehicle_can_change_dir(vehicle)) {
 		dprintf(2, "Noticed dir change\n");
 		callback_getcmd(cb, &vehicle->action[WHEELS_DIR]);
 	}
 }
 
+void	vehicle_dispatch_actions(vehicle_t *vehicle, callback_t *cb)
+{
+	vehicle = vehicle_update_actions(vehicle);
+	vehicle_change_speed(vehicle, cb);
+	vehicle_change_dir(vehicle, cb);
+	vehicle = vehicle_reset_changeflag(vehicle);
+}
+
 void	ai_update_vehicle(vehicle_t *vehicle)
 {
-	ai_update_speed(vehicle);
-	ai_update_direction(vehicle);
+	vehicle = ai_update_speed(vehicle);
+	vehicle = ai_update_direction(vehicle);
 }
 
 void	simulation_run(sim_t *sim, callback_t *cb)
@@ -40,16 +51,15 @@ void	simulation_run(sim_t *sim, callback_t *cb)
 	vehicle_t	vehicle = vehicle_new();
 
 	simulation_init_vehicle(&vehicle, cb);
-	sleep(2);
+	sleep(WAIT_MAIN_S);
 	while (!n4s_track_cleared(cb, &vehicle.getinfo[GET_INFO_LIDAR])) {
 		vehicle_observe(&vehicle, cb);
-		//print_vehicle_infos(&vehicle);	//dbg
 		ai_update_vehicle(&vehicle);
 		vehicle_dispatch_actions(&vehicle, cb);
-		usleep(20);
+		usleep(WAIT_LOOP_MS);
 	}
 	simulation_stop_vehicle(&vehicle, cb);
-	sleep(2);
+	sleep(WAIT_MAIN_S);
 	simulation_stop(cb, sim);
 	vehicle_destroy(&vehicle);
 }

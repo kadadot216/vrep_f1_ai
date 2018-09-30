@@ -72,7 +72,11 @@ typedef	struct	s_vehicle {
 #define	DRANGE_0	(0.0f)
 #define	DRANGE_SIZE	(8)
 
+int		vehicle_too_close(vehicle_t *this);
 void		print_vehicle_infos(vehicle_t *this);
+void		ai_update_vehicle(vehicle_t *vehicle);
+void		vehicle_change_dir(vehicle_t *vehicle, callback_t *cb);
+void		vehicle_change_speed(vehicle_t *vehicle, callback_t *cb);
 int		is_speed_flag_set(vehicle_t *this);
 int		is_both_flags_set(vehicle_t *this);
 int		is_dir_flag_set(vehicle_t *this);

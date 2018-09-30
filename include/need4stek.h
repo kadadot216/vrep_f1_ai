@@ -26,6 +26,9 @@ typedef struct	s_callback_col {
 	char		*l_addinfo[ADDINFO_PTS];
 }	callback_col_t;
 
+#define	WAIT_MAIN_S	(2)
+#define	WAIT_LOOP_MS	(20)
+
 #define RI_CALLBACK 	(0)
 #define RI_LIDAR 	(1)
 #define RI_FEEDBACK 	(2)
