@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** compose.c
-** File description:
-** Command composition function
-*/
-
 #include <stdio.h>
 #include "command.h"
 

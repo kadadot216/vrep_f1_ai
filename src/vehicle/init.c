@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** init.c
-** File description:
-** Vehicle initialization functions
-*/
-
 #include "vehicle.h"
 
 vehicle_t	*vehicle_init_actions(vehicle_t *this)

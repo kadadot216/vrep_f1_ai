@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_inew.c
-** File description:
-** Malloc an int
-*/
-
 #include <stdlib.h>
 
 int	*my_inew(void)

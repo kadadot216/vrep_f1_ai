@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** setters.c
-** File description:
-** Setters related functions
-*/
-
 #include "vehicle.h"
 #include "command.h"
 #include "lidar.h"

@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** lidar.c
-** File description:
-** Lidar calculations related functions
-*/
-
 #include "vehicle.h"
 
 int	lidar_sides_over_center(lidar_t *this)

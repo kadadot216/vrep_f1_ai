@@ -1,25 +1,23 @@
-/*
-** EPITECH PROJECT, 2018
-** print.c
-** File description:
-** Print function for callback
-*/
-
 #include <stdio.h>
 #include "my.h"
 #include "need4stek.h"
 
-void	callback_print_rvals(callback_t *this)
+void	rvals_print_res_lidar(callback_t *this)
 {
 	int	i = 0;
 
+	while (i < LRES_SIZE) {
+		fprintf(stderr, (i == LRES_SIZE-1) ? "%f\n" : "%f, ",
+		this->rvals.lidar[i]);
+		i++;
+	}
+}
+
+void	callback_print_rvals(callback_t *this)
+{
 	fprintf(stderr, "\t\"rvals \": \n\t");
 	if (this->rtype == RES_LIDAR) {
-		while (i < LRES_SIZE) {
-			fprintf(stderr, (i == LRES_SIZE-1) ? "%f\n" : "%f, ",
-			this->rvals.lidar[i]);
-			i++;
-		}
+		rvals_print_res_lidar(this);
 	} else if (this->rtype == RES_FEEDBACK) {
 		fprintf(stderr, "[%f]\n", this->rvals.fbk);
 	} else if (this->rtype == RES_SIMTIME) {

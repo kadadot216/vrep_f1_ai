@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** vehicle.c
-** File description:
-** Vehicle related functions
-*/
-
 #include "need4stek.h"
 #include "vehicle.h"
 

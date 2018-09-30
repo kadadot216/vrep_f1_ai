@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** getcmd.c
-** File description:
-** Callback commands interaction
-*/
-
 #include <stdio.h>
 #include "callback.h"
 #include "command.h"

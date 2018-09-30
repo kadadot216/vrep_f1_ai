@@ -1,10 +1,3 @@
-##
-## EPITECH PROJECT, 2018
-## Makefile
-## File description:
-## Makefile for Need4Stek
-##
-
 CC		=	gcc -W -Wall -Werror -Wextra
 DBCC		=	gcc -g
 RM		=	rm -f
@@ -36,7 +29,7 @@ HDPATH		=	./include
 CFLAGS		+=	-I$(HDPATH)
 LDFLAGS		=	-L./$(LIB_DIR)
 LIBFLAG		=	-l$(LIB_NAMEDIR)
-NAME		=	ai
+NAME		=	./executables/ai
 
 MAIN		=	src/main.c
 
@@ -66,12 +59,15 @@ SRC		=	src/simulation/init.c		\
 			src/vehicle/vehicle.c		\
 			src/vehicle/init.c		\
 			src/vehicle/update.c		\
+			src/vehicle/changeflags.c	\
 			src/vehicle/setters.c		\
+			src/vehicle/setters2.c		\
 			src/vehicle/actions.c		\
+			src/vehicle/actions_checks.c	\
 			src/vehicle/lidar/setters.c	\
 			src/vehicle/lidar/checking.c	\
-			src/vehicle/ai/direction.c	\
-			src/vehicle/ai/range.c
+			src/vehicle/ai/dirside.c	\
+			src/vehicle/ai/ai.c
 
 OBJ		=	$(SRC:.c=.o)
 OBJ		+=	$(MAIN:.c=.o)
@@ -83,7 +79,7 @@ TEST_SRC	=	tests/redirect_all_std.c	\
 
 TEST_FLAGS	=	--coverage -lcriterion
 
-GDB_MAIN	=	tests/main.c
+GDB_MAIN	=	$(MAIN)
 GDB_NAME	=	gdb.out
 
 

@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** command.h
-** File description:
-** Header file for Command functions
-*/
-
 #ifndef __COMMAND_H__
 #define __COMMAND_H__
 
@@ -32,7 +25,6 @@ typedef	struct	s_command {
 void		command_send(command_t *this);
 cmdvalue_t	*cmdval_new(valtype_t vtype);
 command_t	*command_table_destroy(command_t *this, int size);
-command_t	*get_simtab(void);
 command_t	cmd_entry(cmdname_t name, char *prefix, valtype_t type,
 api_rtype_t rtype);
 

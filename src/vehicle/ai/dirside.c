@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** direction.c
-** File description:
-** Direction related functions for AI
-*/
-
 #include "vehicle.h"
 #include "lidar.h"
 

@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** get_parts.c
-** File description:
-** Callback structure getter functions
-*/
-
 #include "my.h"
 #include "need4stek.h"
 

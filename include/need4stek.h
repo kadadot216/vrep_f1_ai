@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** need4stek.h
-** File description:
-** Header file for Need4Stek structures
-*/
-
 #ifndef __NEED4STEK_H__
 #define __NEED4STEK_H__
 
@@ -25,6 +18,9 @@ typedef struct	s_callback_col {
 	char		*l_code_str[SIM_LIST_SIZE];
 	char		*l_addinfo[ADDINFO_PTS];
 }	callback_col_t;
+
+#define	WAIT_MAIN_S	(2)
+#define	WAIT_LOOP_MS	(20)
 
 #define RI_CALLBACK 	(0)
 #define RI_LIDAR 	(1)
