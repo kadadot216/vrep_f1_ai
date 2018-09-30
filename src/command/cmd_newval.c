@@ -16,10 +16,11 @@ cmdvalue_t	*cmdval_new(valtype_t vtype)
 	new = malloc(sizeof(cmdvalue_t));
 	if (!new)
 		return (NULL);
-	if (vtype == V_INT)
+	if (vtype == V_INT) {
 		new->i = 0;
-	else if (vtype == V_FLOAT)
-		new->f = 0.0f;
+		return (new);
+	}
+	new->f = 0.0f;
 	return (new);
 }
 

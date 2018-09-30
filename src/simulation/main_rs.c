@@ -8,11 +8,11 @@
 #include "simulation.h"
 
 void	simulation_begin(callback_t *cb, callback_col_t *col,
-command_t *simulation)
+sim_t *sim)
 {
 	cb = callback_link_ref(cb, col);
 	cb = callback_set_rtype(cb, RES_NIL);
-	cb = callback_getcmd(cb, &simulation[START_SIMULATION]);
+	cb = callback_getcmd(cb, &sim->actions[START_SIMULATION]);
 }
 
 void	simulation_init_vehicle(vehicle_t *this, callback_t *cb)
@@ -30,7 +30,7 @@ void	simulation_stop_vehicle(vehicle_t *this, callback_t *cb)
 	cb = callback_getcmd(cb, &this->action[CAR_FORWARD]);
 }
 
-void	simulation_stop(callback_t *cb, command_t *simulation)
+void	simulation_stop(callback_t *cb, sim_t *sim)
 {
-	cb = callback_getcmd(cb, &simulation[STOP_SIMULATION]);
+	cb = callback_getcmd(cb, &sim->actions[STOP_SIMULATION]);
 }

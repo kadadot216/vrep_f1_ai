@@ -66,7 +66,9 @@ SRC		=	src/simulation/init.c		\
 			src/vehicle/vehicle.c		\
 			src/vehicle/init.c		\
 			src/vehicle/update.c		\
+			src/vehicle/changeflags.c	\
 			src/vehicle/setters.c		\
+			src/vehicle/setters2.c		\
 			src/vehicle/actions.c		\
 			src/vehicle/lidar/setters.c	\
 			src/vehicle/lidar/checking.c	\

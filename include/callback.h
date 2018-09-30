@@ -13,7 +13,7 @@
 
 void		callback_print_all(callback_t *this);
 void		rvals_reset(callback_t *this);
-int		n4s_track_cleared(callback_t *c, command_t *siminfo);
+int		n4s_track_cleared(callback_t *c, command_t *cmd);
 callback_t	*callback_get_addinfo(callback_t *this, char *line);
 callback_t	*callback_get_code(callback_t *this, char *line);
 callback_t	*callback_get_code_str(callback_t *this, char *line);
@@ -25,6 +25,6 @@ callback_t	*callback_link_ref(callback_t *this, callback_col_t *col);
 callback_t	*callback_reset(callback_t *this);
 callback_t	*callback_unset(callback_t *this);
 callback_t	callback_new(void);
-callback_t	*callback_getcmd(callback_t *this, command_t *command);
+callback_t	*callback_getcmd(callback_t *this, command_t *cmd);
 
 #endif /* __CALLBACK_H__ */
