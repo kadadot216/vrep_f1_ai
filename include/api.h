@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** api.h
-** File description:
-** Header file for api values
-*/
-
 #ifndef __API_H__
 #define __API_H__
 

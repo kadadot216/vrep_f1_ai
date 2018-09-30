@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** lidar.h
-** File description:
-** Header file for Lidar functions
-*/
-
 #ifndef __LIDAR_H__
 #define __LIDAR_H__
 

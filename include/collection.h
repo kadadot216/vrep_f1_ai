@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** collection.h
-** File description:
-** Header file for collection operations
-*/
-
 #ifndef __COLLECTION_H__
 #define __COLLECTION_H__
 

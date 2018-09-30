@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** collection_free2.c
-** File description:
-** Follow up of collection free
-*/
-
 #include "need4stek.h"
 
 callback_col_t	*callback_col_reset_codes(callback_col_t *this)

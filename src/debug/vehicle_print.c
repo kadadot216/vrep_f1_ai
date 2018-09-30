@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** vehicle_print.c
-** File description:
-** Vehicle printing functions
-*/
-
 #include <stdio.h>
 #include "vehicle.h"
 

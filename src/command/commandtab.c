@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** command.c
-** File description:
-** Command related functions
-*/
-
 #include "my.h"
 #include "need4stek.h"
 #include "command.h"

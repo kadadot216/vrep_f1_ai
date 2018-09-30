@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_strfree.c
-** File description:
-** Cleans and free a str
-*/
-
 #include <stdlib.h>
 #include "my.h"
 

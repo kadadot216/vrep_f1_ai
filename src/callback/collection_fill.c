@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** collection_fill.c
-** File description:
-** Responses API collection fill
-*/
-
 #include "need4stek.h"
 
 callback_col_t	*callback_col_fill_addinfos(callback_col_t *this)

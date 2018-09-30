@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** col_print.c
-** File description:
-** Print related functions for callback
-*/
-
 #include <stdio.h>
 #include "need4stek.h"
 

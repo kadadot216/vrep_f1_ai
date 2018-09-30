@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** addinfo.c
-** File description:
-** Addinfo creation
-*/
-
 #include <stdio.h> //d
 
 #include "my.h"

@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** rvals.c
-** File description:
-** Command for rvals
-*/
-
 #include "need4stek.h"
 
 api_rvals_t	rvals_get_lidar(callback_t *this, char *line)

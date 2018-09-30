@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_fnew.c
-** File description:
-** Allocate a new float variable in heap.
-*/
-
 #include <stdlib.h>
 
 float	*my_fnew(void)

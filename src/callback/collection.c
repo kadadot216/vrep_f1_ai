@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** collection.c
-** File description:
-** Related collection functions
-*/
-
 #include "need4stek.h"
 #include "collection.h"
 

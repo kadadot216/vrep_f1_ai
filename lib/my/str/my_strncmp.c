@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_strcmp.c
-** File description:
-** Compares n bytes of two strings
-*/
-
 int	my_strncmp(char const *s1, char const *s2, int n)
 {
 	int	i = 0;
